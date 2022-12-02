@@ -16,7 +16,7 @@ for (let calories of input.split(/\r?\n/)) {
   elves[elf_index] = (elves[elf_index] || 0) + Number.parseInt(calories);
 }
 
-console.log("Part 1: " + elves.reduce((acc, curr) => Math.max(acc, curr)));
+console.log("Part 1: " + elves.reduce((prev, curr) => Math.max(prev, curr)));
 console.log(
   "Part 2: " +
     elves
