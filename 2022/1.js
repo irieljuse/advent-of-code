@@ -17,7 +17,25 @@ for (let calories of input.split(/\r?\n/)) {
 }
 
 console.log("Part 1: " + elves.reduce((acc, curr) => Math.max(acc, curr)));
-
-elves.sort((a, b) => a - b);
-
-console.log("Part 2: " + (elves.at(-1) + elves.at(-2) + elves.at(-3)));
+console.log(
+  "Part 2: " +
+    elves
+      .reduce(
+        (prev, curr) => {
+          let [max, max2, max3] = prev;
+          if (curr > max) {
+            max3 = max2;
+            max2 = max;
+            max = curr;
+          } else if (curr > max2) {
+            max3 = max2;
+            max2 = curr;
+          } else if (curr > max3) {
+            max3 = curr;
+          }
+          return [max, max2, max3];
+        },
+        [0, 0, 0]
+      )
+      .reduce((prev, curr) => prev + curr)
+);
