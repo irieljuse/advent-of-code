@@ -22,18 +22,12 @@ console.log(
     elves
       .reduce(
         (prev, curr) => {
-          let [max, max2, max3] = prev;
-          if (curr > max) {
-            max3 = max2;
-            max2 = max;
-            max = curr;
-          } else if (curr > max2) {
-            max3 = max2;
-            max2 = curr;
-          } else if (curr > max3) {
-            max3 = curr;
+          let index = prev.findLastIndex((val) => curr > val);
+          while (index > -1) {
+            [prev[index], curr] = [curr, prev[index]];
+            index--;
           }
-          return [max, max2, max3];
+          return prev;
         },
         [0, 0, 0]
       )
