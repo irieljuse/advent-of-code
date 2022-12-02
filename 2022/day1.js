@@ -1,7 +1,7 @@
 import { argv } from "node:process";
 import { readFile } from "node:fs/promises";
 
-const filePath = argv[2] || "input1.txt";
+const filePath = argv[2] || "day1.txt";
 const input = await readFile(filePath, { encoding: "utf8" });
 
 let elves = [0];
